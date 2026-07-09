@@ -50,9 +50,26 @@
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   .fao-nav-links { white-space: nowrap; }
   .fao-nav-cta-label { white-space: nowrap; }
+  #mobileMenuBtn { display: none; }
   @media (max-width: 1010px) {
     .fao-nav-links { display: none !important; }
+    #mobileMenuBtn { display: inline-flex !important; }
   }
+  #mobileMenu { display: none; position: fixed; top: 0; inset-inline: 0; z-index: 60; background: #F6F4EE; border-bottom: 1px solid #E4DFD3; box-shadow: 0 24px 48px rgba(18,56,48,.12); animation: fadeIn .18s ease-out both; }
+  #mobileMenu.open { display: block; }
+  #mobileMenu a { display: block; padding: 18px 28px; font-size: 20px; color: #1B5148; border-top: 1px solid #E4DFD3; }
+  #mobileMenu a:active { color: #EB5B00; }
+
+  /* ── Gallery marquee ── */
+  .fao-marquee { overflow: hidden; direction: ltr; }
+  .fao-marquee-track { display: flex; gap: 16px; width: max-content; animation: marquee 60s linear infinite; }
+  .fao-marquee:hover .fao-marquee-track { animation-play-state: paused; }
+  .fao-marquee img { height: 300px; width: auto; border-radius: 4px; display: block; }
+  @media (max-width: 760px) { .fao-marquee img { height: 200px; } }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── Clients logo wall ── */
+  .fao-clients-img { width: 100%; max-width: 1100px; display: block; margin: 0 auto; mix-blend-mode: multiply; }
 
   /* Language visibility — one page, two DOM variants */
   html[data-lang="ar"] .l-en { display: none !important; }
@@ -111,7 +128,35 @@
     <div style="display:flex;align-items:center;gap:14px">
       <button id="langToggle" class="hov-lang" style="background:transparent;border:1px solid #C9C2B2;border-radius:9999px;padding:8px 18px;font-size:14px;font-weight:700;color:#1B5148;cursor:pointer;font-family:'Nunito','Anaqa',sans-serif;transition:all .2s ease-out"><span class="l-ar">EN</span><span class="l-en">عربي</span></button>
       <button onclick="openOrderModal()" class="hov-navcta" style="background:#1B5148;color:#FFFFFF;border:none;border-radius:9999px;padding:10px 22px;font-size:15px;white-space:nowrap;transition:background .2s ease-out;cursor:pointer;font-family:inherit"><span dir="rtl" class="l-ar fao-nav-cta-label" style="white-space:nowrap">اطلب عرض سعر</span><span class="l-en fao-nav-cta-label" style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;white-space:nowrap">Request a quote</span></button>
+      <button id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Menu" style="align-items:center;justify-content:center;width:42px;height:42px;background:transparent;border:1px solid #C9C2B2;border-radius:9999px;cursor:pointer;color:#1B5148">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
     </div>
+  </div>
+</div>
+
+<!-- Mobile menu panel -->
+<div id="mobileMenu">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 24px">
+    <img src="assets/logo.png" alt="FAO فاو" style="height:30px">
+    <button onclick="toggleMobileMenu()" aria-label="Close" style="width:42px;height:42px;background:transparent;border:none;font-size:26px;color:#5A5548;cursor:pointer;line-height:1">×</button>
+  </div>
+  <nav dir="rtl" class="l-ar">
+    <a href="#services" onclick="toggleMobileMenu()">الخدمات</a>
+    <a href="#moments" onclick="toggleMobileMenu()">اللحظات</a>
+    <a href="#how" onclick="toggleMobileMenu()">كيف نعمل</a>
+    <a href="#faq" onclick="toggleMobileMenu()">أسئلة شائعة</a>
+    <a href="#contact" onclick="toggleMobileMenu()">تواصل</a>
+  </nav>
+  <nav dir="ltr" class="l-en" style="font-family:'Nunito',sans-serif">
+    <a href="#services" onclick="toggleMobileMenu()">Services</a>
+    <a href="#moments" onclick="toggleMobileMenu()">Moments</a>
+    <a href="#how" onclick="toggleMobileMenu()">How it works</a>
+    <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
+    <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+  </nav>
+  <div style="padding:20px 24px 28px">
+    <button onclick="toggleMobileMenu();openOrderModal()" style="width:100%;background:#EB5B00;color:#FFFFFF;border:none;border-radius:9999px;padding:15px;font-size:18px;cursor:pointer;font-family:inherit"><span class="l-ar">اطلب عرض سعر</span><span class="l-en" style="font-family:'Nunito',sans-serif;font-weight:800">Request a quote</span></button>
   </div>
 </div>
 
@@ -168,6 +213,22 @@
         <div><div style="font-size:18px;font-weight:800;color:#FFFFFF;margin-bottom:10px">On-site, in person</div><div style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.6">Our team arrives early and stays until the event ends.</div></div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ══════════════════ CLIENTS — logo wall (auto-hides if images missing) ══════════════════ -->
+<div id="clients" style="background:#F6F4EE">
+  <div class="sec-pad pad-x" style="max-width:1320px;margin:0 auto;padding:96px 48px 72px;text-align:center">
+    <div dir="rtl" class="l-ar">
+      <div style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:17px;margin-bottom:20px"><span style="width:44px;height:1px;background:#8A8474"></span>جهات وثقت بنا<span style="width:44px;height:1px;background:#8A8474"></span></div>
+      <h2 style="font-size:44px;line-height:1.2;color:#1B5148;font-weight:400;margin-bottom:48px">ضيافتنا حاضرة عند أكبر الجهات.</h2>
+    </div>
+    <div dir="ltr" class="l-en" style="font-family:'Nunito',sans-serif">
+      <div style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:20px"><span style="width:44px;height:1px;background:#8A8474"></span>Trusted by<span style="width:44px;height:1px;background:#8A8474"></span></div>
+      <h2 style="font-size:38px;line-height:1.15;color:#1B5148;font-weight:900;letter-spacing:-.02em;margin-bottom:48px">Serving the Kingdom's leading organizations.</h2>
+    </div>
+    <img src="assets/img/clients-1.png" alt="عملاء فاو" loading="lazy" class="fao-clients-img" onerror="document.getElementById('clients').style.display='none'">
+    <img src="assets/img/clients-2.png" alt="عملاء فاو" loading="lazy" class="fao-clients-img" style="margin-top:8px" onerror="this.remove()">
   </div>
 </div>
 
@@ -389,6 +450,20 @@
   </div>
 </div>
 
+<!-- ══════════════════ GALLERY — full-bleed marquee ══════════════════ -->
+<div style="background:#F6F4EE;padding:0 0 96px">
+  <div class="pad-x" style="max-width:1320px;margin:0 auto;padding:0 48px 40px">
+    <div dir="rtl" class="l-ar" style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:17px"><span style="width:44px;height:1px;background:#8A8474"></span>من أعمالنا</div>
+    <div dir="ltr" class="l-en" style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;font-family:'Nunito',sans-serif"><span style="width:44px;height:1px;background:#8A8474"></span>From our work</div>
+  </div>
+  <div class="fao-marquee">
+    <div class="fao-marquee-track">
+      <img src="assets/img/gallery/g1.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g2.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g3.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g4.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g5.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g6.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g7.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g8.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g9.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g10.jpg" alt="ضيافة فاو" loading="lazy">
+      <img src="assets/img/gallery/g1.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g2.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g3.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g4.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g5.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g6.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g7.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g8.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g9.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g10.jpg" alt="" aria-hidden="true" loading="lazy">
+    </div>
+  </div>
+</div>
+
 <!-- ══════════════════ FAQ ══════════════════ -->
 <div id="faq" style="background:#EFEBE1">
   <div class="sec-pad pad-x" style="max-width:900px;margin:0 auto;padding:120px 48px">
@@ -468,6 +543,14 @@
   <div style="border-top:1px solid rgba(246,244,238,.12)">
     <div class="pad-x" style="max-width:1320px;margin:0 auto;padding:36px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
       <img src="assets/logo-white.png" alt="FAO فاو" style="height:30px">
+      <div style="display:flex;align-items:center;gap:18px">
+        <a href="https://www.instagram.com/fao.ksa" target="_blank" rel="noopener" aria-label="Instagram" style="color:rgba(246,244,238,.65);display:inline-flex;transition:color .2s ease-out" onmouseover="this.style.color='#EB5B00'" onmouseout="this.style.color='rgba(246,244,238,.65)'">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@fao.ksa" target="_blank" rel="noopener" aria-label="TikTok" style="color:rgba(246,244,238,.65);display:inline-flex;transition:color .2s ease-out" onmouseover="this.style.color='#EB5B00'" onmouseout="this.style.color='rgba(246,244,238,.65)'">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.32 5.56a5.1 5.1 0 0 1-3.54-4.06A5.3 5.3 0 0 1 15.7 1h-3.44v13.9a2.9 2.9 0 1 1-2.9-2.9c.3 0 .58.05.85.13V8.6a6.4 6.4 0 0 0-.85-.06 6.34 6.34 0 1 0 6.34 6.34V8.3a8.5 8.5 0 0 0 4.96 1.59V6.45a5.1 5.1 0 0 1-1.34-.89z"/></svg>
+        </a>
+      </div>
       <div dir="rtl" class="l-ar" style="font-size:16px;color:rgba(246,244,238,.4)">© ٢٠٢٦ فاو للتموين والضيافة — الرياض</div>
       <div dir="ltr" class="l-en" style="font-size:13px;color:rgba(246,244,238,.4);font-family:'Nunito',sans-serif">© 2026 FAO Catering &amp; Hospitality — Riyadh</div>
     </div>
@@ -568,6 +651,10 @@
     sel.selectedIndex = current > -1 ? current : 0;
   }
   renderEventTypes();
+
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
 
   function openOrderModal() {
     document.getElementById('orderModal').style.display = 'block';
