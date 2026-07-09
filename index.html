@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فاو | ضيافة مؤسسية وكيترينق للشركات في الرياض</title>
-<meta name="description" content="فاو شركة ضيافة سعودية في الرياض. كوفي بريك، فنقر فود، بوفيهات، وتغطية كاملة للاجتماعات والمؤتمرات والفعاليات — بتنظيم لا يحتاج إشرافكم.">
-<link rel="icon" type="image/png" href="assets/logo-green.png">
-<meta property="og:title" content="فاو | ضيافة مؤسسية وكيترينق للشركات في الرياض">
-<meta property="og:description" content="كوفي بريك، فنقر فود، بوفيهات، وتغطية كاملة للاجتماعات والمؤتمرات والفعاليات.">
-<meta property="og:image" content="https://fao.sa/assets/img/photo-7.jpg">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>فاو — ضيافة مؤسسية | FAO Corporate Hospitality</title>
+<meta name="description" content="فاو — تموين وضيافة مؤسسية في الرياض. كوفي بريك، فنقر فود، بوفيهات، وجبات موظفين، ضيافة VIP وتموين الفعاليات. فريق واحد يتكفل بكل التفاصيل، ويوصل في وقته.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<meta property="og:title" content="فاو — ضيافة مؤسسية | FAO Corporate Hospitality">
+<meta property="og:description" content="من كوفي بريك الاجتماع إلى تموين فعاليتكم الكبرى — فريق واحد يتكفل بكل التفاصيل، ويوصل في وقته.">
+<meta property="og:image" content="https://fao.sa/assets/img/hero.jpg">
 <meta property="og:url" content="https://fao.sa">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_SA">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<meta property="og:locale:alternate" content="en_US">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,698 +33,448 @@
 }
 </script>
 <style>
+  /* Anaqa ships in Regular only — hierarchy via SIZE + COLOR, never fake-bold. */
   @font-face {
     font-family: 'Anaqa';
     src: url('assets/fonts/Anaqa-Regular.ttf') format('truetype');
-    font-weight: 400;
+    font-weight: 100 900;
+    font-style: normal;
     font-display: swap;
   }
-
-  :root {
-    --green: #1B5148;
-    --green-deep: #143D36;
-    --orange: #EB5B00;
-    --gold: #FFB200;
-    --cream: #FFE6A9;
-    --charcoal: #2C2C2C;
-    --white: #F8F7F4;
-    --ink: #1F2523;
-    --font-ar: 'Anaqa', 'Segoe UI', Tahoma, sans-serif;
-    --font-en: 'Nunito', system-ui, sans-serif;
-    --radius: 14px;
-    --section-pad: clamp(72px, 10vw, 130px);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  * { box-sizing: border-box; margin: 0; padding: 0; font-synthesis: none; }
   html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--font-ar);
-    background: var(--white);
-    color: var(--ink);
-    line-height: 1.9;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+  body { background: #F6F4EE; font-family: 'Anaqa', 'SF Arabic', 'Geeza Pro', system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  a { color: #1B5148; text-decoration: none; }
+  a:hover { color: #EB5B00; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .fao-nav-links { white-space: nowrap; }
+  .fao-nav-cta-label { white-space: nowrap; }
+  @media (max-width: 1010px) {
+    .fao-nav-links { display: none !important; }
   }
 
-  img { display: block; max-width: 100%; }
+  /* Language visibility — one page, two DOM variants */
+  html[data-lang="ar"] .l-en { display: none !important; }
+  html[data-lang="en"] .l-ar { display: none !important; }
 
-  .en, .num { font-family: var(--font-en); direction: ltr; unicode-bidi: isolate; }
+  /* Hover states (converted from design's style-hover attributes) */
+  .hov-orange:hover { color: #EB5B00 !important; border-color: #EB5B00 !important; }
+  .hov-lang:hover { border-color: #1B5148 !important; background: #1B5148 !important; color: #FFFFFF !important; }
+  .hov-navcta:hover { background: #123830 !important; color: #FFFFFF !important; }
+  .hov-cta:hover { background: #C44A00 !important; color: #FFFFFF !important; }
+  .svc-row-ar:hover { padding-right: 16px !important; }
+  .svc-row-en:hover { padding-left: 16px !important; }
+  .moment-tile img { transition: transform .5s ease-out; }
+  .moment-tile:hover img { transform: scale(1.03); }
+  summary.hov-orange::-webkit-details-marker { display: none; }
 
-  .container { max-width: 1160px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); }
-
-  .label {
-    display: inline-block;
-    color: var(--gold);
-    font-size: 15px;
-    letter-spacing: .5px;
-    margin-bottom: 18px;
-  }
-
-  .label--dark { color: var(--orange); }
-
-  /* ---------- Nav ---------- */
-  .nav {
-    position: fixed;
-    inset-inline: 0;
-    top: 0;
-    z-index: 100;
-    background: rgba(248, 247, 244, 0);
-    transition: background .35s, box-shadow .35s;
-  }
-  .nav.scrolled {
-    background: rgba(248, 247, 244, .96);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 1px 0 rgba(27, 81, 72, .08);
-  }
-  .nav__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 74px;
-  }
-  .nav__logo img { height: 26px; width: auto; }
-  .nav__logo .logo-white { display: block; }
-  .nav__logo .logo-green { display: none; }
-  .nav.scrolled .logo-white { display: none; }
-  .nav.scrolled .logo-green { display: block; }
-  .nav__links {
-    display: flex;
-    gap: 34px;
-    list-style: none;
-  }
-  .nav__links a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 17px;
-    transition: color .25s;
-  }
-  .nav.scrolled .nav__links a { color: var(--green); }
-  .nav__links a:hover { color: var(--gold); }
-  .nav.scrolled .nav__links a:hover { color: var(--orange); }
-  .nav__cta {
-    background: var(--orange);
-    color: #fff !important;
-    padding: 9px 22px;
-    border-radius: 100px;
-    font-size: 16px;
-    text-decoration: none;
-    transition: transform .2s, background .25s;
-  }
-  .nav__cta:hover { background: #d15200; transform: translateY(-1px); }
-  .nav__burger { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
-  .nav__burger span {
-    display: block;
-    width: 24px; height: 2px;
-    background: var(--white);
-    margin: 5px 0;
-    transition: .3s;
-  }
-  .nav.scrolled .nav__burger span { background: var(--green); }
-
-  /* ---------- Hero ---------- */
-  .hero {
-    background: var(--green);
-    color: var(--white);
-    min-height: 100svh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding-top: 74px;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    inset-inline-start: -120px;
-    bottom: -160px;
-    width: 380px; height: 380px;
-    border-radius: 50%;
-    background: var(--green-deep);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .hero .container { position: relative; z-index: 1; }
-  .hero__grid {
-    display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap: clamp(36px, 6vw, 80px);
-    align-items: center;
-    width: 100%;
-    padding-block: 56px;
-  }
-  .hero h1 {
-    font-size: clamp(44px, 6.4vw, 84px);
-    line-height: 1.35;
-    font-weight: 400;
-    margin-bottom: 22px;
-  }
-  .hero p {
-    font-size: clamp(18px, 1.6vw, 21px);
-    color: #E4E9E7;
-    max-width: 52ch;
-    margin-bottom: 38px;
-  }
-  .hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 14px 34px;
-    border-radius: 100px;
-    transition: transform .2s, background .25s, color .25s;
-  }
-  .btn--primary { background: var(--orange); color: #fff; }
-  .btn--primary:hover { background: #d15200; transform: translateY(-2px); }
-  .btn--ghost {
-    color: var(--white);
-    border: 1px solid rgba(248, 247, 244, .35);
-  }
-  .btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
-  .hero__photo {
-    position: relative;
-    z-index: 1;
-  }
-  .hero__photo img {
-    border-radius: var(--radius);
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    width: 100%;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, .35);
-  }
-  .hero__photo::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    transform: translate(-18px, 18px);
-    border: 1px solid rgba(255, 178, 0, .4);
-    border-radius: var(--radius);
-    pointer-events: none;
-  }
-
-  /* ---------- Quiet strip ---------- */
-  .strip {
-    background: var(--green-deep);
-    color: #DCE4E1;
-    text-align: center;
-    padding: 34px 20px;
-    font-size: clamp(17px, 1.7vw, 21px);
-  }
-
-  /* ---------- Sections ---------- */
-  section { padding-block: var(--section-pad); }
-  .section-head { max-width: 640px; margin-bottom: clamp(40px, 5vw, 64px); }
-  .section-head h2 {
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 400;
-    color: var(--green);
-    line-height: 1.4;
-  }
-  .section-head p { font-size: 18px; color: #5A6360; margin-top: 12px; }
-
-  /* ---------- Services ---------- */
-  .services { background: var(--white); }
-  .services__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 26px;
-  }
-  .card {
-    background: #fff;
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid rgba(27, 81, 72, .09);
-    transition: transform .3s, box-shadow .3s;
-  }
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 48px rgba(27, 81, 72, .12);
-  }
-  .card img {
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-  }
-  .card__body { padding: 24px 24px 28px; }
-  .card__body h3 { font-size: 24px; font-weight: 400; color: var(--green); margin-bottom: 8px; }
-  .card__body p { font-size: 16.5px; color: #5A6360; }
-
-  /* ---------- Details band ---------- */
-  .details {
-    background: var(--green);
-    color: var(--white);
-  }
-  .details__grid {
-    display: grid;
-    grid-template-columns: .9fr 1.1fr;
-    gap: clamp(36px, 6vw, 80px);
-    align-items: center;
-  }
-  .details h2 {
-    font-size: clamp(34px, 4.4vw, 58px);
-    font-weight: 400;
-    line-height: 1.4;
-    margin-bottom: 18px;
-  }
-  .details p { font-size: 19px; color: #E4E9E7; max-width: 46ch; }
-  .details__photos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-  }
-  .details__photos img {
-    border-radius: 10px;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    width: 100%;
-  }
-  .details__photos img:nth-child(2) { transform: translateY(22px); }
-
-  /* ---------- Gallery ---------- */
-  .gallery { background: #F2EFE9; }
-  .gallery__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-  }
-  .gallery__grid a {
-    display: block;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .gallery__grid img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    transition: transform .5s;
-  }
-  .gallery__grid a:hover img { transform: scale(1.05); }
-  .gallery__grid a:nth-child(1),
-  .gallery__grid a:nth-child(6) { grid-column: span 2; grid-row: span 2; }
-  .gallery__grid a:nth-child(1) img,
-  .gallery__grid a:nth-child(6) img { height: 100%; }
-
-  /* ---------- Process ---------- */
-  .process__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 26px;
-  }
-  .step { position: relative; padding-top: 18px; }
-  .step__num {
-    font-family: var(--font-en);
-    font-size: 52px;
-    font-weight: 700;
-    color: rgba(27, 81, 72, .14);
-    line-height: 1;
-    margin-bottom: 10px;
-  }
-  .step h3 { font-size: 23px; font-weight: 400; color: var(--green); margin-bottom: 6px; }
-  .step p { font-size: 16.5px; color: #5A6360; }
-
-  /* ---------- CTA ---------- */
-  .cta {
-    background: var(--green);
-    color: var(--white);
-    text-align: center;
-  }
-  .cta h2 {
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 400;
-    line-height: 1.4;
-    margin-bottom: 16px;
-  }
-  .cta p { font-size: 19px; color: #E4E9E7; margin-bottom: 36px; }
-  .cta__sub { margin-top: 26px; font-size: 16px; color: #B9C6C2; }
-  .cta__sub a { color: var(--gold); text-decoration: none; }
-
-  /* ---------- Footer ---------- */
-  .footer {
-    background: var(--charcoal);
-    color: #C9C9C6;
-    padding: 56px 0 34px;
-    font-size: 15.5px;
-  }
-  .footer__grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-  }
-  .footer img { height: 30px; margin-bottom: 16px; }
-  .footer__legal { line-height: 2.1; }
-  .footer__links { display: flex; flex-direction: column; gap: 8px; }
-  .footer a { color: #C9C9C6; text-decoration: none; transition: color .25s; }
-  .footer a:hover { color: var(--gold); }
-  .footer__bottom {
-    border-top: 1px solid rgba(255, 255, 255, .1);
-    padding-top: 22px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    font-size: 14px;
-    color: #8E8E8B;
-  }
-
-  /* ---------- Floating WhatsApp ---------- */
-  .wa-float {
-    position: fixed;
-    bottom: 26px;
-    inset-inline-start: 26px;
-    z-index: 90;
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: #25D366;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 26px rgba(0, 0, 0, .25);
-    transition: transform .2s;
-  }
-  .wa-float:hover { transform: scale(1.08); }
-  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
-
-  /* ---------- Reveal ---------- */
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* ---------- Lightbox ---------- */
-  .lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    background: rgba(20, 30, 27, .93);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 4vw;
-    cursor: zoom-out;
-  }
-  .lightbox.open { display: flex; }
-  .lightbox img { max-width: 100%; max-height: 92vh; border-radius: 8px; }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 960px) {
-    .hero__grid { grid-template-columns: 1fr; }
-    .hero__photo { max-width: 460px; }
-    .services__grid { grid-template-columns: repeat(2, 1fr); }
-    .details__grid { grid-template-columns: 1fr; }
-    .process__grid { grid-template-columns: repeat(2, 1fr); gap: 36px 26px; }
-    .gallery__grid { grid-template-columns: repeat(2, 1fr); }
-    .gallery__grid a:nth-child(1), .gallery__grid a:nth-child(6) { grid-column: span 2; grid-row: auto; }
-  }
-  @media (max-width: 680px) {
-    .nav__links {
-      position: fixed;
-      top: 74px;
-      inset-inline: 0;
-      background: var(--white);
-      flex-direction: column;
-      gap: 0;
-      padding: 10px 0 18px;
-      box-shadow: 0 20px 30px rgba(0, 0, 0, .1);
-      display: none;
-    }
-    .nav__links.open { display: flex; }
-    .nav__links a {
-      color: var(--green) !important;
-      padding: 12px 28px;
-      display: block;
-    }
-    .nav__links .nav__cta {
-      margin: 12px 28px 0;
-      text-align: center;
-      color: #fff !important;
-    }
-    .nav__burger { display: block; }
-    .services__grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 42px; }
+  /* Small screens: reduce heavy section padding (per handoff responsive note) */
+  @media (max-width: 760px) {
+    .sec-pad { padding-top: 64px !important; padding-bottom: 64px !important; }
+    .pad-x { padding-left: 24px !important; padding-right: 24px !important; }
   }
 </style>
 </head>
 <body>
 
-<!-- Nav -->
-<header class="nav" id="nav">
-  <div class="container nav__inner">
-    <a href="#" class="nav__logo" aria-label="فاو">
-      <img class="logo-white" src="assets/logo-white.png" alt="فاو — FAO Catering Company">
-      <img class="logo-green" src="assets/logo-green.png" alt="فاو — FAO Catering Company">
-    </a>
-    <nav>
-      <ul class="nav__links" id="navLinks">
-        <li><a href="#services">الخدمات</a></li>
-        <li><a href="#details">معيارنا</a></li>
-        <li><a href="#gallery">أعمالنا</a></li>
-        <li><a href="#process">كيف نعمل</a></li>
-        <li><a class="nav__cta wa-link" href="#">اطلب عرض سعر</a></li>
-      </ul>
-    </nav>
-    <button class="nav__burger" id="burger" aria-label="القائمة">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+<!-- ══════════════════ NAV ══════════════════ -->
+<div style="position:sticky;top:0;z-index:50;background:rgba(246,244,238,.9);backdrop-filter:blur(14px);border-bottom:1px solid #E4DFD3">
+  <div class="pad-x" style="max-width:1320px;margin:0 auto;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top"><img src="assets/logo.png" alt="FAO فاو" style="height:34px;display:block"></a>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="container hero__grid">
-    <div>
-      <span class="label">ضيافة مؤسسية · الرياض</span>
-      <h1>ضيافةٌ تُدار بإتقان.</h1>
-      <p>فاو شركة ضيافة سعودية مقرّها الرياض. نجهّز الكوفي بريك والفنقر فود والبوفيهات لاجتماعاتكم ومؤتمراتكم وفعاليّاتكم — بتنظيمٍ لا يحتاج إشرافكم.</p>
-      <div class="hero__actions">
-        <a class="btn btn--primary wa-link" href="#">اطلب عرض سعر</a>
-        <a class="btn btn--ghost" href="#services">استعرض الخدمات</a>
-      </div>
+    <div dir="rtl" class="fao-nav-links l-ar" style="display:flex;align-items:center;gap:28px;font-size:17px">
+      <a class="hov-orange" href="#services" style="color:#3A3A3A;white-space:nowrap">الخدمات</a>
+      <a class="hov-orange" href="#moments" style="color:#3A3A3A;white-space:nowrap">اللحظات</a>
+      <a class="hov-orange" href="#how" style="color:#3A3A3A;white-space:nowrap">كيف نعمل</a>
+      <a class="hov-orange" href="#contact" style="color:#3A3A3A;white-space:nowrap">تواصل</a>
     </div>
-    <div class="hero__photo">
-      <img src="assets/img/photo-7.jpg" alt="فريق ضيافة فاو يقدم صينية كرواسون" fetchpriority="high">
+    <div dir="ltr" class="fao-nav-links l-en" style="display:flex;align-items:center;gap:28px;font-size:15px;font-family:'Nunito',sans-serif;font-weight:600">
+      <a class="hov-orange" href="#services" style="color:#3A3A3A;white-space:nowrap">Services</a>
+      <a class="hov-orange" href="#moments" style="color:#3A3A3A;white-space:nowrap">Moments</a>
+      <a class="hov-orange" href="#how" style="color:#3A3A3A;white-space:nowrap">How it works</a>
+      <a class="hov-orange" href="#contact" style="color:#3A3A3A;white-space:nowrap">Contact</a>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:14px">
+      <button id="langToggle" class="hov-lang" style="background:transparent;border:1px solid #C9C2B2;border-radius:9999px;padding:8px 18px;font-size:14px;font-weight:700;color:#1B5148;cursor:pointer;font-family:'Nunito','Anaqa',sans-serif;transition:all .2s ease-out"><span class="l-ar">EN</span><span class="l-en">عربي</span></button>
+      <a href="#" target="_blank" class="wa-link hov-navcta" style="background:#1B5148;color:#FFFFFF;border-radius:9999px;padding:10px 22px;font-size:15px;white-space:nowrap;transition:background .2s ease-out"><span dir="rtl" class="l-ar fao-nav-cta-label" style="white-space:nowrap">اطلب عرض سعر</span><span class="l-en fao-nav-cta-label" style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;white-space:nowrap">Request a quote</span></a>
     </div>
   </div>
-</section>
-
-<!-- Quiet strip -->
-<div class="strip">
-  من اجتماعات مجالس الإدارة إلى مؤتمرات بمئات الحضور — التجهيز نفسه، والمعيار نفسه.
 </div>
 
-<!-- Services -->
-<section class="services" id="services">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="label label--dark">الخدمات</span>
-      <h2>حلول ضيافة لكل ما تستضيفه شركتكم.</h2>
-      <p>ستة خطوط خدمة، تُدار جميعها بالمطبخ المركزي نفسه وفريق التشغيل نفسه.</p>
+<!-- ══════════════════ HERO — full-bleed, copy written on the photo ══════════════════ -->
+<div id="top" style="position:relative;overflow:hidden;background:#F6F4EE;height:clamp(640px,88vh,840px)">
+  <img src="assets/img/hero.jpg" alt="FAO — تقديم كانابيه وضيافة اجتماعات" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;animation:fadeIn 1.3s ease-out both">
+
+  <div dir="rtl" class="l-ar" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;padding:0 64px">
+    <div style="max-width:600px;padding:56px 44px;border-radius:8px;background:radial-gradient(ellipse 620px 520px at 60% 45%, rgba(246,244,238,.82) 0%, rgba(246,244,238,0) 72%);animation:fadeUp .8s ease-out both">
+      <div style="display:inline-flex;align-items:center;gap:14px;color:#5A5548;font-size:17px;margin-bottom:26px"><span style="width:44px;height:1px;background:#5A5548"></span>تموين وضيافة مؤسسية — الرياض</div>
+      <h1 style="font-size:clamp(48px,5.6vw,84px);line-height:1.14;color:#1B5148;font-weight:400;margin-bottom:28px;text-wrap:balance">ضيافة شركتك،<br><span style="color:#EB5B00">محلولة.</span></h1>
+      <p style="font-size:21px;line-height:1.85;color:#3A3A3A;max-width:480px;margin-bottom:40px">من كوفي بريك الاجتماع إلى تموين فعاليتكم الكبرى — فريق واحد يتكفل بكل التفاصيل، ويوصل في وقته.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+        <a href="#" target="_blank" class="wa-link hov-cta" style="background:#EB5B00;color:#FFFFFF;border-radius:9999px;padding:17px 42px;font-size:20px;transition:background .2s ease-out">تواصل عبر واتساب</a>
+        <a href="#services" class="hov-orange" style="color:#1B5148;font-size:20px;display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid #1B5148;padding-bottom:2px">استعرض الخدمات</a>
+      </div>
     </div>
-    <div class="services__grid">
-      <div class="card reveal">
-        <img src="assets/img/photo-8.jpg" alt="طاولة كوفي بريك مجهزة" loading="lazy">
-        <div class="card__body">
-          <h3>كوفي بريك</h3>
-          <p>قهوة ومخبوزات صباحية تصل جاهزة، وتُرتَّب في مكانها قبل وصول الحضور.</p>
+  </div>
+  <div dir="ltr" class="l-en" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-start;padding:0 64px;font-family:'Nunito',sans-serif">
+    <div style="max-width:600px;padding:56px 44px;border-radius:8px;background:radial-gradient(ellipse 620px 520px at 40% 45%, rgba(246,244,238,.82) 0%, rgba(246,244,238,0) 72%);animation:fadeUp .8s ease-out both">
+      <div style="display:inline-flex;align-items:center;gap:14px;color:#5A5548;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:26px"><span style="width:44px;height:1px;background:#5A5548"></span>Corporate catering — Riyadh</div>
+      <h1 style="font-size:clamp(40px,4.6vw,68px);line-height:1.12;color:#1B5148;font-weight:900;letter-spacing:-.025em;margin-bottom:28px;text-wrap:balance">Corporate hospitality,<br><span style="color:#EB5B00">solved.</span></h1>
+      <p style="font-size:18px;line-height:1.7;color:#3A3A3A;max-width:480px;margin-bottom:40px">From meeting coffee breaks to large-scale event catering — one team handles every detail, and delivers on time.</p>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+        <a href="#" target="_blank" class="wa-link hov-cta" style="background:#EB5B00;color:#FFFFFF;border-radius:9999px;padding:17px 42px;font-size:17px;font-weight:800;transition:background .2s ease-out">Contact on WhatsApp</a>
+        <a href="#services" class="hov-orange" style="color:#1B5148;font-size:17px;font-weight:700;border-bottom:1px solid #1B5148;padding-bottom:2px">Explore services</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ TRUST BAND ══════════════════ -->
+<div style="background:#1B5148">
+  <div class="pad-x" style="max-width:1320px;margin:0 auto;padding:72px 48px">
+    <div dir="rtl" class="l-ar" style="display:flex;align-items:flex-start;justify-content:space-between;gap:56px;flex-wrap:wrap">
+      <div style="max-width:340px">
+        <div style="font-size:26px;color:#FFE6A9;line-height:1.7;margin-bottom:14px">"نجهز لك الضيافة بشكل مرتب وواضح."</div>
+        <div style="font-size:18px;color:rgba(255,255,255,.55);line-height:1.8">نخدم الشركات والجهات الحكومية ومنظمي الفعاليات في الرياض.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;flex:1;min-width:320px">
+        <div><div style="font-size:22px;color:#FFFFFF;margin-bottom:10px">نقطة تواصل واحدة</div><div style="font-size:17px;color:rgba(255,255,255,.55);line-height:1.7">مسؤول حساب مباشر يتابع طلبك من البداية للنهاية.</div></div>
+        <div><div style="font-size:22px;color:#FFFFFF;margin-bottom:10px">سعر واضح من البداية</div><div style="font-size:17px;color:rgba(255,255,255,.55);line-height:1.7">عرض سعر مكتوب قبل التنفيذ — بلا رسوم مفاجئة.</div></div>
+        <div><div style="font-size:22px;color:#FFFFFF;margin-bottom:10px">طاقم حاضر ميدانياً</div><div style="font-size:17px;color:rgba(255,255,255,.55);line-height:1.7">نصل قبل موعدكم، ونبقى حتى تنتهي المناسبة.</div></div>
+      </div>
+    </div>
+    <div dir="ltr" class="l-en" style="display:flex;align-items:flex-start;justify-content:space-between;gap:56px;flex-wrap:wrap;font-family:'Nunito',sans-serif">
+      <div style="max-width:340px">
+        <div style="font-size:21px;font-weight:700;color:#FFE6A9;line-height:1.6;margin-bottom:14px">"Hospitality, prepared clearly and on time."</div>
+        <div style="font-size:16px;color:rgba(255,255,255,.55);line-height:1.7">Serving companies, government entities, and event organizers across Riyadh.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;flex:1;min-width:320px">
+        <div><div style="font-size:18px;font-weight:800;color:#FFFFFF;margin-bottom:10px">One point of contact</div><div style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.6">A dedicated account lead follows your order start to finish.</div></div>
+        <div><div style="font-size:18px;font-weight:800;color:#FFFFFF;margin-bottom:10px">Clear pricing, upfront</div><div style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.6">A written quote before execution — no surprise fees.</div></div>
+        <div><div style="font-size:18px;font-weight:800;color:#FFFFFF;margin-bottom:10px">On-site, in person</div><div style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.6">Our team arrives early and stays until the event ends.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ SERVICES — editorial list ══════════════════ -->
+<div id="services" style="background:#F6F4EE">
+  <div class="sec-pad pad-x" style="max-width:1320px;margin:0 auto;padding:120px 48px">
+
+    <div dir="rtl" class="l-ar" style="display:flex;flex-wrap:wrap;gap:64px">
+      <div style="flex:1 1 300px;max-width:420px">
+        <div style="position:sticky;top:120px">
+          <div style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:17px;margin-bottom:20px"><span style="width:44px;height:1px;background:#8A8474"></span>الخدمات</div>
+          <h2 style="font-size:56px;line-height:1.15;color:#1B5148;font-weight:400;margin-bottom:24px">خدمات ضيافة<br>متكاملة.</h2>
+          <p style="font-size:19px;line-height:1.9;color:#5A5548">مورد واحد يغطي ضيافتكم كاملة — من الاجتماع الصباحي إلى فعالية نهاية العام.</p>
         </div>
       </div>
-      <div class="card reveal">
-        <img src="assets/img/photo-14.jpg" alt="أصناف فنقر فود" loading="lazy">
-        <div class="card__body">
-          <h3>فنقر فود</h3>
-          <p>أصنافٌ بمقاس اللقمة، مصمّمة لتُقدَّم في اللقاءات دون تكلّف.</p>
+      <div style="flex:2 1 480px;min-width:0">
+        <div class="svc-row-ar" style="border-top:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-family:'Nunito',sans-serif;font-weight:700" dir="ltr">01</div>
+          <div><div style="font-size:36px;color:#1A1A1A;margin-bottom:8px">كوفي بريك</div><div style="font-size:18px;color:#77705F;line-height:1.8">مشروبات ساخنة ومعجنات وتجهيز احترافي — للاجتماعات وورش العمل.</div></div>
+          <div style="font-size:16px;color:#EB5B00">الأكثر طلباً</div>
+        </div>
+        <div class="svc-row-ar" style="border-top:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-family:'Nunito',sans-serif;font-weight:700" dir="ltr">02</div>
+          <div><div style="font-size:36px;color:#1A1A1A;margin-bottom:8px">فينقر فود</div><div style="font-size:18px;color:#77705F;line-height:1.8">لقيمات أنيقة لحفلات الاستقبال والمعارض واستقبال ضيوف الشرف.</div></div>
+          <div style="font-size:16px;color:#8A8474">استقبالات</div>
+        </div>
+        <div class="svc-row-ar" style="border-top:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-family:'Nunito',sans-serif;font-weight:700" dir="ltr">03</div>
+          <div><div style="font-size:36px;color:#1A1A1A;margin-bottom:8px">بوفيهات</div><div style="font-size:18px;color:#77705F;line-height:1.8">مائدة متكاملة للمؤتمرات والفعاليات المؤسسية الكبرى — تجهيز وطاقم كامل.</div></div>
+          <div style="font-size:16px;color:#8A8474">مؤتمرات</div>
+        </div>
+        <div class="svc-row-ar" style="border-top:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-family:'Nunito',sans-serif;font-weight:700" dir="ltr">04</div>
+          <div><div style="font-size:36px;color:#1A1A1A;margin-bottom:8px">وجبات موظفين</div><div style="font-size:18px;color:#77705F;line-height:1.8">برامج يومية أو أسبوعية أو شهرية — ثابتة ومغذية وفي الوقت المحدد.</div></div>
+          <div style="font-size:16px;color:#8A8474">برامج مستمرة</div>
+        </div>
+        <div class="svc-row-ar" style="border-top:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-family:'Nunito',sans-serif;font-weight:700" dir="ltr">05</div>
+          <div><div style="font-size:36px;color:#1A1A1A;margin-bottom:8px">ضيافة VIP</div><div style="font-size:18px;color:#77705F;line-height:1.8">خدمة راقية لمجالس الإدارة وإفطارات التنفيذيين وكبار الضيوف.</div></div>
+          <div style="font-size:16px;color:#8A8474">مجالس إدارة</div>
+        </div>
+        <div class="svc-row-ar" style="border-top:1px solid #D8D2C2;border-bottom:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-family:'Nunito',sans-serif;font-weight:700" dir="ltr">06</div>
+          <div><div style="font-size:36px;color:#1A1A1A;margin-bottom:8px">تموين الفعاليات</div><div style="font-size:18px;color:#77705F;line-height:1.8">تموين متكامل للفعاليات الوطنية والتجمعات الحكومية والمناسبات الكبرى.</div></div>
+          <div style="font-size:16px;color:#8A8474">تجهيز كامل</div>
         </div>
       </div>
-      <div class="card reveal">
-        <img src="assets/img/photo-9.jpg" alt="بوفيه فعاليات متكامل" loading="lazy">
-        <div class="card__body">
-          <h3>بوفيهات الفعاليات</h3>
-          <p>بوفيهات متكاملة بإعدادٍ أنيق، وفريق خدمة يعمل بهدوء.</p>
+    </div>
+
+    <div dir="ltr" class="l-en" style="display:flex;flex-wrap:wrap;gap:64px;font-family:'Nunito',sans-serif">
+      <div style="flex:1 1 300px;max-width:420px">
+        <div style="position:sticky;top:120px">
+          <div style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:20px"><span style="width:44px;height:1px;background:#8A8474"></span>Services</div>
+          <h2 style="font-size:48px;line-height:1.1;color:#1B5148;font-weight:900;letter-spacing:-.02em;margin-bottom:24px">Complete<br>hospitality.</h2>
+          <p style="font-size:17px;line-height:1.75;color:#5A5548">One supplier covering your hospitality end to end — from the morning meeting to the year-end event.</p>
         </div>
       </div>
-      <div class="card reveal">
-        <img src="assets/img/photo-2.jpg" alt="صناديق ضيافة فاو للاجتماعات" loading="lazy">
-        <div class="card__body">
-          <h3>الاجتماعات والضيافة التنفيذية</h3>
-          <p>تجهيز قاعات الاجتماعات ووجبات الموظفين، ببرامج يومية أو أسبوعية.</p>
+      <div style="flex:2 1 480px;min-width:0">
+        <div class="svc-row-en" style="border-top:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-weight:700">01</div>
+          <div><div style="font-size:30px;font-weight:800;color:#1A1A1A;margin-bottom:8px">Coffee Break</div><div style="font-size:16px;color:#77705F;line-height:1.7">Hot drinks, pastries, and professional setup — for meetings and workshops.</div></div>
+          <div style="font-size:14px;font-weight:700;color:#EB5B00">Most requested</div>
         </div>
-      </div>
-      <div class="card reveal">
-        <img src="assets/img/photo-6.jpg" alt="عربة ضيافة للمؤتمرات والمعارض" loading="lazy">
-        <div class="card__body">
-          <h3>المؤتمرات والمعارض</h3>
-          <p>تغطية تشغيلية كاملة: محطات ضيافة، تجهيز، ولوجستيات في الموقع.</p>
+        <div class="svc-row-en" style="border-top:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-weight:700">02</div>
+          <div><div style="font-size:30px;font-weight:800;color:#1A1A1A;margin-bottom:8px">Finger Food</div><div style="font-size:16px;color:#77705F;line-height:1.7">Elegant canapés for receptions, exhibitions, and guest arrivals.</div></div>
+          <div style="font-size:14px;font-weight:700;color:#8A8474">Receptions</div>
         </div>
-      </div>
-      <div class="card reveal">
-        <img src="assets/img/photo-17.jpg" alt="مخبوزات يومية لتموين المقاهي" loading="lazy">
-        <div class="card__body">
-          <h3>تموين المقاهي</h3>
-          <p>مخبوزات وساندويتشات وحلويات تصل يومياً، بجودة ثابتة.</p>
+        <div class="svc-row-en" style="border-top:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-weight:700">03</div>
+          <div><div style="font-size:30px;font-weight:800;color:#1A1A1A;margin-bottom:8px">Buffets</div><div style="font-size:16px;color:#77705F;line-height:1.7">A complete spread for conferences and large corporate events — full setup and staff.</div></div>
+          <div style="font-size:14px;font-weight:700;color:#8A8474">Conferences</div>
+        </div>
+        <div class="svc-row-en" style="border-top:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-weight:700">04</div>
+          <div><div style="font-size:30px;font-weight:800;color:#1A1A1A;margin-bottom:8px">Employee Meals</div><div style="font-size:16px;color:#77705F;line-height:1.7">Daily, weekly, or monthly programs — consistent, nutritious, on time.</div></div>
+          <div style="font-size:14px;font-weight:700;color:#8A8474">Ongoing programs</div>
+        </div>
+        <div class="svc-row-en" style="border-top:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-weight:700">05</div>
+          <div><div style="font-size:30px;font-weight:800;color:#1A1A1A;margin-bottom:8px">VIP Catering</div><div style="font-size:16px;color:#77705F;line-height:1.7">Refined service for board meetings, executive breakfasts, and distinguished guests.</div></div>
+          <div style="font-size:14px;font-weight:700;color:#8A8474">Boardrooms</div>
+        </div>
+        <div class="svc-row-en" style="border-top:1px solid #D8D2C2;border-bottom:1px solid #D8D2C2;padding:36px 0;display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:baseline;transition:padding .25s ease-out">
+          <div style="font-size:15px;color:#B0A996;font-weight:700">06</div>
+          <div><div style="font-size:30px;font-weight:800;color:#1A1A1A;margin-bottom:8px">Event Catering</div><div style="font-size:16px;color:#77705F;line-height:1.7">Full-scale catering for national events, government gatherings, and major occasions.</div></div>
+          <div style="font-size:14px;font-weight:700;color:#8A8474">Full setup</div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- Details band -->
-<section class="details" id="details">
-  <div class="container details__grid">
-    <div class="reveal">
-      <span class="label">معيارنا</span>
-      <h2>التفاصيل هي المعيار.</h2>
-      <p>نصل قبل الموعد. نرتّب المكان كما لو كان لنا. ونغادر بعد أن يكتمل كل شيء — لتبقى الضيافة حاضرة، ونحن في الخلفية.</p>
-    </div>
-    <div class="details__photos reveal">
-      <img src="assets/img/photo-13.jpg" alt="تفاصيل أصناف الضيافة" loading="lazy">
-      <img src="assets/img/photo-15.jpg" alt="حلويات فردية بإعداد دقيق" loading="lazy">
-      <img src="assets/img/photo-16.jpg" alt="فنقر فود بترتيب هندسي" loading="lazy">
-    </div>
-  </div>
-</section>
+<!-- ══════════════════ MOMENTS — photo collage ══════════════════ -->
+<div id="moments" style="background:#EFEBE1">
+  <div class="sec-pad pad-x" style="max-width:1320px;margin:0 auto;padding:120px 48px">
 
-<!-- Gallery -->
-<section class="gallery" id="gallery">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="label label--dark">أعمالنا</span>
-      <h2>من فعاليات جهّزناها.</h2>
-    </div>
-    <div class="gallery__grid reveal">
-      <a href="assets/img/photo-4.jpg"><img src="assets/img/photo-4.jpg" alt="ضيافة فاو في فعالية خارجية" loading="lazy"></a>
-      <a href="assets/img/photo-3.jpg"><img src="assets/img/photo-3.jpg" alt="أصناف مخبوزات في تقديم خارجي" loading="lazy"></a>
-      <a href="assets/img/photo-5.jpg"><img src="assets/img/photo-5.jpg" alt="تجهيز مشروبات الضيافة" loading="lazy"></a>
-      <a href="assets/img/photo-11.jpg"><img src="assets/img/photo-11.jpg" alt="تقديم أصناف الضيافة" loading="lazy"></a>
-      <a href="assets/img/photo-12.jpg"><img src="assets/img/photo-12.jpg" alt="طاولة ضيافة بإعداد أنيق" loading="lazy"></a>
-      <a href="assets/img/photo-10.jpg"><img src="assets/img/photo-10.jpg" alt="بوفيه أصناف متنوعة" loading="lazy"></a>
-      <a href="assets/img/photo-18.jpg"><img src="assets/img/photo-18.jpg" alt="محطة حلويات وضيافة" loading="lazy"></a>
-      <a href="assets/img/photo-20.jpg"><img src="assets/img/photo-20.jpg" alt="تقديم خارجي لأصناف الضيافة" loading="lazy"></a>
-    </div>
-  </div>
-</section>
-
-<!-- Process -->
-<section class="process" id="process">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="label label--dark">كيف نعمل</span>
-      <h2>أربع خطوات، من الطلب إلى التنفيذ.</h2>
-    </div>
-    <div class="process__grid">
-      <div class="step reveal">
-        <div class="step__num">01</div>
-        <h3>تواصل</h3>
-        <p>أرسل تفاصيل مناسبتك: التاريخ، عدد الحضور، والموقع.</p>
+    <div dir="rtl" class="l-ar">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:64px">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:17px;margin-bottom:20px"><span style="width:44px;height:1px;background:#8A8474"></span>أين تجدنا</div>
+          <h2 style="font-size:56px;line-height:1.15;color:#1B5148;font-weight:400">لحظات نعتني بها.</h2>
+        </div>
+        <p style="font-size:19px;line-height:1.9;color:#5A5548;max-width:400px">حيثما اجتمع فريقك أو ضيوفك — فاو حاضرة قبل الموعد.</p>
       </div>
-      <div class="step reveal">
-        <div class="step__num">02</div>
-        <h3>عرض السعر</h3>
-        <p>يصلك عرضٌ واضح بالأصناف والتكلفة، قابلٌ للتخصيص.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step__num">03</div>
-        <h3>التجهيز</h3>
-        <p>خطة تشغيلية تغطي الإنتاج والتوصيل والإعداد في الموقع.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step__num">04</div>
-        <h3>التنفيذ</h3>
-        <p>فريقنا في الموقع قبل الموعد، والضيافة جاهزة في وقتها.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta">
-  <div class="container reveal">
-    <h2>مناسبتكم القادمة، مسؤوليتنا.</h2>
-    <p>أرسل التفاصيل، ويصلك عرض السعر عبر واتساب.</p>
-    <a class="btn btn--primary wa-link" href="#">تحدث معنا على واتساب</a>
-    <div class="cta__sub">أو تابعنا على إنستغرام <a href="https://www.instagram.com/fao.ksa" target="_blank" rel="noopener" class="en">@fao.ksa</a></div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div>
-        <img src="assets/logo-white.png" alt="فاو — FAO Catering Company">
-        <div class="footer__legal">
-          شركة فاو الذواقة لتقديم الوجبات<br>
-          الرياض — حي الملك فيصل، شارع محمد القصيبي<br>
-          <span>سجل تجاري: <span class="num">7038084153</span></span><br>
-          <span>الرقم الضريبي: <span class="num">312026357900003</span></span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));grid-auto-rows:260px;gap:20px">
+        <div class="moment-tile" style="position:relative;border-radius:4px;overflow:hidden;grid-row:span 2">
+          <img src="assets/img/moment-boardrooms.jpg" alt="مجالس الإدارة — ضيافة فاو" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,56,48,.75) 0%,transparent 45%)"></div>
+          <div style="position:absolute;bottom:28px;right:28px;font-size:26px;color:#FFFFFF">مجالس الإدارة</div>
+        </div>
+        <div class="moment-tile" style="position:relative;border-radius:4px;overflow:hidden">
+          <img src="assets/img/moment-coffee-break.jpg" alt="كوفي بريك — ضيافة فاو" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 35%">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,56,48,.75) 0%,transparent 45%)"></div>
+          <div style="position:absolute;bottom:28px;right:28px;font-size:26px;color:#FFFFFF">كوفي بريك</div>
+        </div>
+        <div class="moment-tile" style="position:relative;border-radius:4px;overflow:hidden">
+          <img src="assets/img/moment-employee-meals.jpg" alt="وجبات موظفين — ضيافة فاو" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,56,48,.75) 0%,transparent 45%)"></div>
+          <div style="position:absolute;bottom:28px;right:28px;font-size:26px;color:#FFFFFF">وجبات موظفين</div>
+        </div>
+        <div class="moment-tile" style="position:relative;border-radius:4px;overflow:hidden">
+          <img src="assets/img/moment-annual.jpg" alt="الاحتفالات السنوية — ضيافة فاو" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 25%">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,56,48,.75) 0%,transparent 45%)"></div>
+          <div style="position:absolute;bottom:28px;right:28px;font-size:26px;color:#FFFFFF">الاحتفالات السنوية</div>
+        </div>
+        <div class="moment-tile" style="position:relative;border-radius:4px;overflow:hidden">
+          <img src="assets/img/moment-station.jpg" alt="ستيشن — ضيافة فاو" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,56,48,.75) 0%,transparent 45%)"></div>
+          <div style="position:absolute;bottom:28px;right:28px;font-size:26px;color:#FFFFFF">ستيشن</div>
         </div>
       </div>
-      <div class="footer__links">
-        <a href="#services">الخدمات</a>
-        <a href="#details">معيارنا</a>
-        <a href="#gallery">أعمالنا</a>
-        <a href="#process">كيف نعمل</a>
-      </div>
-      <div class="footer__links">
-        <a href="https://www.instagram.com/fao.ksa" target="_blank" rel="noopener">إنستغرام</a>
-        <a href="#" class="wa-link">واتساب</a>
-      </div>
     </div>
-    <div class="footer__bottom">
-      <span>© <span class="num">2026</span> فاو. جميع الحقوق محفوظة.</span>
-      <span class="en">FAO Catering Company — Riyadh, Saudi Arabia</span>
+
+    <div dir="ltr" class="l-en" style="font-family:'Nunito',sans-serif">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:64px">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:20px"><span style="width:44px;height:1px;background:#8A8474"></span>Where you'll find us</div>
+          <h2 style="font-size:48px;line-height:1.1;color:#1B5148;font-weight:900;letter-spacing:-.02em">Moments we care for.</h2>
+        </div>
+        <p style="font-size:17px;line-height:1.75;color:#5A5548;max-width:400px">Wherever your team or guests gather — FAO is there before the hour.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));grid-auto-rows:260px;gap:20px">
+        <div class="moment-tile" style="position:relative;border-radius:4px;overflow:hidden;grid-row:span 2">
+          <img src="assets/img/moment-boardrooms.jpg" alt="Boardrooms — FAO service" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,56,48,.75) 0%,transparent 45%)"></div>
+          <div style="position:absolute;bottom:28px;left:28px;font-size:22px;font-weight:800;color:#FFFFFF">Boardrooms</div>
+        </div>
+        <div class="moment-tile" style="position:relative;border-radius:4px;overflow:hidden">
+          <img src="assets/img/moment-coffee-break.jpg" alt="Coffee Break — FAO service" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 35%">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,56,48,.75) 0%,transparent 45%)"></div>
+          <div style="position:absolute;bottom:28px;left:28px;font-size:22px;font-weight:800;color:#FFFFFF">Coffee Break</div>
+        </div>
+        <div class="moment-tile" style="position:relative;border-radius:4px;overflow:hidden">
+          <img src="assets/img/moment-employee-meals.jpg" alt="Employee meals — FAO service" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,56,48,.75) 0%,transparent 45%)"></div>
+          <div style="position:absolute;bottom:28px;left:28px;font-size:22px;font-weight:800;color:#FFFFFF">Employee meals</div>
+        </div>
+        <div class="moment-tile" style="position:relative;border-radius:4px;overflow:hidden">
+          <img src="assets/img/moment-annual.jpg" alt="Annual celebrations — FAO service" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 25%">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,56,48,.75) 0%,transparent 45%)"></div>
+          <div style="position:absolute;bottom:28px;left:28px;font-size:22px;font-weight:800;color:#FFFFFF">Annual celebrations</div>
+        </div>
+        <div class="moment-tile" style="position:relative;border-radius:4px;overflow:hidden">
+          <img src="assets/img/moment-station.jpg" alt="Station — FAO service" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(18,56,48,.75) 0%,transparent 45%)"></div>
+          <div style="position:absolute;bottom:28px;left:28px;font-size:22px;font-weight:800;color:#FFFFFF">Station</div>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
+</div>
 
-<!-- Floating WhatsApp -->
-<a class="wa-float wa-link" href="#" aria-label="تواصل عبر واتساب">
-  <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.5c1.2.6 2.5.9 3.8.9 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.2 0-2.4-.3-3.5-.8l-.6-.3-4.9.9 1-4.7-.4-.6c-1-1.6-1.5-3.4-1.5-5.3 0-5.5 4.4-9.9 9.9-9.9s9.9 4.4 9.9 9.9-4.4 9.8-9.9 9.8zm5.4-7.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg>
-</a>
+<!-- ══════════════════ HOW IT WORKS ══════════════════ -->
+<div id="how" style="background:#F6F4EE">
+  <div class="sec-pad pad-x" style="max-width:1320px;margin:0 auto;padding:120px 48px">
+    <div dir="rtl" class="l-ar">
+      <div style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:17px;margin-bottom:20px"><span style="width:44px;height:1px;background:#8A8474"></span>كيف نعمل</div>
+      <h2 style="font-size:56px;line-height:1.15;color:#1B5148;font-weight:400;margin-bottom:72px">ثلاث خطوات. بلا تعقيد.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:56px">
+        <div style="border-top:2px solid #1B5148;padding-top:32px">
+          <div style="font-size:15px;color:#B0A996;font-family:'Nunito',sans-serif;font-weight:700;margin-bottom:20px" dir="ltr">01</div>
+          <div style="font-size:32px;color:#1A1A1A;margin-bottom:14px">أرسل التفاصيل</div>
+          <div style="font-size:19px;color:#77705F;line-height:1.9">عدد الضيوف، التاريخ، ونوع الخدمة — رسالة واتساب واحدة تكفي.</div>
+        </div>
+        <div style="border-top:2px solid #EB5B00;padding-top:32px">
+          <div style="font-size:15px;color:#B0A996;font-family:'Nunito',sans-serif;font-weight:700;margin-bottom:20px" dir="ltr">02</div>
+          <div style="font-size:32px;color:#1A1A1A;margin-bottom:14px">نرتب لك</div>
+          <div style="font-size:19px;color:#77705F;line-height:1.9">قائمة مقترحة وعرض سعر واضح — خلال ساعات العمل نفسها.</div>
+        </div>
+        <div style="border-top:2px solid #1B5148;padding-top:32px">
+          <div style="font-size:15px;color:#B0A996;font-family:'Nunito',sans-serif;font-weight:700;margin-bottom:20px" dir="ltr">03</div>
+          <div style="font-size:32px;color:#1A1A1A;margin-bottom:14px">ننفذ بهدوء</div>
+          <div style="font-size:19px;color:#77705F;line-height:1.9">نصل قبل الموعد، نجهز، نقدم، ونرتب المكان بعد الانتهاء.</div>
+        </div>
+      </div>
+    </div>
+    <div dir="ltr" class="l-en" style="font-family:'Nunito',sans-serif">
+      <div style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:20px"><span style="width:44px;height:1px;background:#8A8474"></span>How it works</div>
+      <h2 style="font-size:48px;line-height:1.1;color:#1B5148;font-weight:900;letter-spacing:-.02em;margin-bottom:72px">Three steps. No friction.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:56px">
+        <div style="border-top:2px solid #1B5148;padding-top:32px">
+          <div style="font-size:15px;color:#B0A996;font-weight:700;margin-bottom:20px">01</div>
+          <div style="font-size:26px;font-weight:800;color:#1A1A1A;margin-bottom:14px">Send the details</div>
+          <div style="font-size:17px;color:#77705F;line-height:1.75">Guest count, date, and service type — one WhatsApp message is enough.</div>
+        </div>
+        <div style="border-top:2px solid #EB5B00;padding-top:32px">
+          <div style="font-size:15px;color:#B0A996;font-weight:700;margin-bottom:20px">02</div>
+          <div style="font-size:26px;font-weight:800;color:#1A1A1A;margin-bottom:14px">We plan it</div>
+          <div style="font-size:17px;color:#77705F;line-height:1.75">A proposed menu and a clear quote — within the same business hours.</div>
+        </div>
+        <div style="border-top:2px solid #1B5148;padding-top:32px">
+          <div style="font-size:15px;color:#B0A996;font-weight:700;margin-bottom:20px">03</div>
+          <div style="font-size:26px;font-weight:800;color:#1A1A1A;margin-bottom:14px">We deliver quietly</div>
+          <div style="font-size:17px;color:#77705F;line-height:1.75">We arrive early, set up, serve, and clear the space when it's done.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox"><img alt=""></div>
+<!-- ══════════════════ FAQ ══════════════════ -->
+<div id="faq" style="background:#EFEBE1">
+  <div class="sec-pad pad-x" style="max-width:900px;margin:0 auto;padding:120px 48px">
+    <div dir="rtl" class="l-ar">
+      <div style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:17px;margin-bottom:20px"><span style="width:44px;height:1px;background:#8A8474"></span>أسئلة شائعة</div>
+      <h2 style="font-size:48px;line-height:1.15;color:#1B5148;font-weight:400;margin-bottom:48px">قبل ما تراسلنا.</h2>
+      <details style="border-top:1px solid #D8D2C2;padding:28px 0">
+        <summary class="hov-orange" style="list-style:none;cursor:pointer;font-size:22px;color:#1A1A1A;display:flex;justify-content:space-between;align-items:center;gap:24px">كم المدة اللازمة للحجز؟<span style="font-size:17px;color:#8A8474;flex-shrink:0">+</span></summary>
+        <p style="font-size:18px;line-height:1.85;color:#77705F;margin-top:18px;max-width:640px">عادة نحتاج ٤٨ ساعة على الأقل، ونقدر نلبي الطلبات العاجلة حسب التوفر.</p>
+      </details>
+      <details style="border-top:1px solid #D8D2C2;padding:28px 0">
+        <summary class="hov-orange" style="list-style:none;cursor:pointer;font-size:22px;color:#1A1A1A;display:flex;justify-content:space-between;align-items:center;gap:24px">هل تغطون خارج الرياض؟<span style="font-size:17px;color:#8A8474;flex-shrink:0">+</span></summary>
+        <p style="font-size:18px;line-height:1.85;color:#77705F;margin-top:18px;max-width:640px">نغطي الرياض بالكامل، ونقدر ندرس تغطية مدن أخرى للعقود الثابتة والفعاليات الكبرى.</p>
+      </details>
+      <details style="border-top:1px solid #D8D2C2;padding:28px 0">
+        <summary class="hov-orange" style="list-style:none;cursor:pointer;font-size:22px;color:#1A1A1A;display:flex;justify-content:space-between;align-items:center;gap:24px">أقل عدد ضيوف تقبلونه؟<span style="font-size:17px;color:#8A8474;flex-shrink:0">+</span></summary>
+        <p style="font-size:18px;line-height:1.85;color:#77705F;margin-top:18px;max-width:640px">نخدم من اجتماع 5 أشخاص إلى فعالية 500+ ضيف — الأسعار تختلف حسب الحجم ونوع الخدمة.</p>
+      </details>
+      <details style="border-top:1px solid #D8D2C2;border-bottom:1px solid #D8D2C2;padding:28px 0">
+        <summary class="hov-orange" style="list-style:none;cursor:pointer;font-size:22px;color:#1A1A1A;display:flex;justify-content:space-between;align-items:center;gap:24px">كيف تتم الفوترة للشركات؟<span style="font-size:17px;color:#8A8474;flex-shrink:0">+</span></summary>
+        <p style="font-size:18px;line-height:1.85;color:#77705F;margin-top:18px;max-width:640px">نصدر فاتورة ضريبية رسمية، ونقدر نرتب دفعات دورية للعقود الشهرية أو برامج وجبات الموظفين المستمرة.</p>
+      </details>
+    </div>
+    <div dir="ltr" class="l-en" style="font-family:'Nunito',sans-serif">
+      <div style="display:inline-flex;align-items:center;gap:14px;color:#8A8474;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:20px"><span style="width:44px;height:1px;background:#8A8474"></span>FAQ</div>
+      <h2 style="font-size:40px;line-height:1.15;color:#1B5148;font-weight:900;letter-spacing:-.02em;margin-bottom:48px">Before you message us.</h2>
+      <details style="border-top:1px solid #D8D2C2;padding:28px 0">
+        <summary class="hov-orange" style="list-style:none;cursor:pointer;font-size:19px;font-weight:700;color:#1A1A1A;display:flex;justify-content:space-between;align-items:center;gap:24px">How much lead time do you need?<span style="font-size:16px;font-weight:400;color:#8A8474;flex-shrink:0">+</span></summary>
+        <p style="font-size:16px;line-height:1.75;color:#77705F;margin-top:18px;max-width:600px">We typically need at least 48 hours' notice, and can often accommodate urgent requests depending on availability.</p>
+      </details>
+      <details style="border-top:1px solid #D8D2C2;padding:28px 0">
+        <summary class="hov-orange" style="list-style:none;cursor:pointer;font-size:19px;font-weight:700;color:#1A1A1A;display:flex;justify-content:space-between;align-items:center;gap:24px">Do you serve outside Riyadh?<span style="font-size:16px;font-weight:400;color:#8A8474;flex-shrink:0">+</span></summary>
+        <p style="font-size:16px;line-height:1.75;color:#77705F;margin-top:18px;max-width:600px">We cover all of Riyadh, and can discuss coverage in other cities for standing contracts and larger events.</p>
+      </details>
+      <details style="border-top:1px solid #D8D2C2;padding:28px 0">
+        <summary class="hov-orange" style="list-style:none;cursor:pointer;font-size:19px;font-weight:700;color:#1A1A1A;display:flex;justify-content:space-between;align-items:center;gap:24px">Is there a minimum guest count?<span style="font-size:16px;font-weight:400;color:#8A8474;flex-shrink:0">+</span></summary>
+        <p style="font-size:16px;line-height:1.75;color:#77705F;margin-top:18px;max-width:600px">We serve everything from a 5-person meeting to 500+ guest events — pricing scales with size and service type.</p>
+      </details>
+      <details style="border-top:1px solid #D8D2C2;border-bottom:1px solid #D8D2C2;padding:28px 0">
+        <summary class="hov-orange" style="list-style:none;cursor:pointer;font-size:19px;font-weight:700;color:#1A1A1A;display:flex;justify-content:space-between;align-items:center;gap:24px">How does invoicing work for companies?<span style="font-size:16px;font-weight:400;color:#8A8474;flex-shrink:0">+</span></summary>
+        <p style="font-size:16px;line-height:1.75;color:#77705F;margin-top:18px;max-width:600px">We issue an official tax invoice, and can arrange recurring billing for monthly contracts or ongoing employee meal programs.</p>
+      </details>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ FINAL CTA ══════════════════ -->
+<div id="contact" style="background:#123830">
+  <div class="pad-x" style="max-width:1320px;margin:0 auto;padding:140px 48px;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div dir="rtl" class="l-ar" style="display:flex;flex-direction:column;align-items:center">
+      <h2 style="font-size:clamp(48px,5.5vw,84px);line-height:1.2;color:#F6F4EE;font-weight:400;margin-bottom:24px;text-wrap:balance">ضيافتك القادمة،<br><span style="color:#FFB200">جاهزة قبل ضيوفك.</span></h2>
+      <p style="font-size:21px;line-height:1.9;color:rgba(246,244,238,.6);max-width:480px;margin-bottom:52px">أرسل تفاصيل مناسبتك، ويصلك عرض سعر واضح خلال ساعات العمل.</p>
+      <a href="#" target="_blank" class="wa-link hov-cta" style="background:#EB5B00;color:#FFFFFF;border-radius:9999px;padding:20px 56px;font-size:23px;display:inline-flex;align-items:center;gap:14px;transition:background .2s ease-out">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.28-.2-.58-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.8 9.8 0 0 1-1.51-5.26c0-5.44 4.43-9.87 9.89-9.87a9.82 9.82 0 0 1 9.87 9.88c0 5.44-4.43 9.88-9.87 9.88zm8.4-18.28A11.8 11.8 0 0 0 12.04 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.32-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.54 0 11.87-5.33 11.87-11.89 0-3.18-1.24-6.16-3.47-8.4z"></path></svg>
+        تواصل عبر واتساب
+      </a>
+      <div style="font-size:17px;color:rgba(246,244,238,.4);margin-top:28px">نرد خلال ساعة في أوقات الدوام</div>
+    </div>
+    <div dir="ltr" class="l-en" style="display:flex;flex-direction:column;align-items:center;font-family:'Nunito',sans-serif">
+      <h2 style="font-size:clamp(44px,5vw,76px);line-height:1.12;color:#F6F4EE;font-weight:900;letter-spacing:-.025em;margin-bottom:24px;text-wrap:balance">Your next event,<br><span style="color:#FFB200">ready before your guests.</span></h2>
+      <p style="font-size:19px;line-height:1.75;color:rgba(246,244,238,.6);max-width:480px;margin-bottom:52px">Send your event details and receive a clear quote within business hours.</p>
+      <a href="#" target="_blank" class="wa-link hov-cta" style="background:#EB5B00;color:#FFFFFF;border-radius:9999px;padding:20px 56px;font-size:19px;font-weight:800;display:inline-flex;align-items:center;gap:14px;transition:background .2s ease-out">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.28-.2-.58-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.8 9.8 0 0 1-1.51-5.26c0-5.44 4.43-9.87 9.89-9.87a9.82 9.82 0 0 1 9.87 9.88c0 5.44-4.43 9.88-9.87 9.88zm8.4-18.28A11.8 11.8 0 0 0 12.04 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.32-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.54 0 11.87-5.33 11.87-11.89 0-3.18-1.24-6.16-3.47-8.4z"></path></svg>
+        Contact on WhatsApp
+      </a>
+      <div style="font-size:15px;font-weight:600;color:rgba(246,244,238,.4);margin-top:28px">We reply within the hour during business hours</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="border-top:1px solid rgba(246,244,238,.12)">
+    <div class="pad-x" style="max-width:1320px;margin:0 auto;padding:36px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <img src="assets/logo-white.png" alt="FAO فاو" style="height:30px">
+      <div dir="rtl" class="l-ar" style="font-size:16px;color:rgba(246,244,238,.4)">© ٢٠٢٦ فاو للتموين والضيافة — الرياض</div>
+      <div dir="ltr" class="l-en" style="font-size:13px;color:rgba(246,244,238,.4);font-family:'Nunito',sans-serif">© 2026 FAO Catering &amp; Hospitality — Riyadh</div>
+    </div>
+  </div>
+</div>
 
 <script>
-  // ⚠️ رقم الواتساب — حدّثه هنا مرة واحدة ويتحدث في كل مكان
-  const WA_NUMBER = '966500000000'; // TODO: ضع رقم مبيعات فاو الرسمي
-  const WA_TEXT = encodeURIComponent('مرحباً فاو، أرغب بطلب عرض سعر لمناسبة.\nالتاريخ: \nعدد الحضور: \nالموقع: ');
-  document.querySelectorAll('.wa-link').forEach(a => {
-    a.href = `https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`;
-    a.target = '_blank';
-    a.rel = 'noopener';
+  // ⚠️ رقم الواتساب — القيمة الوحيدة التي تحتاج تحديثاً قبل الإطلاق
+  var WA_NUMBER = '966500000000'; // TODO: replace with FAO's real WhatsApp Business number
+  var waHref = 'https://wa.me/' + WA_NUMBER.replace(/[^0-9]/g, '');
+  document.querySelectorAll('.wa-link').forEach(function (a) { a.href = waHref; });
+
+  // Language toggle — 'ar' | 'en', persisted across visits
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    try { localStorage.setItem('fao-lang', lang); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('fao-lang'); } catch (e) {}
+  if (saved === 'en') setLang('en');
+  document.getElementById('langToggle').addEventListener('click', function () {
+    setLang(document.documentElement.getAttribute('data-lang') === 'ar' ? 'en' : 'ar');
   });
-
-  // Nav scroll state
-  const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  // Mobile menu
-  const burger = document.getElementById('burger');
-  const links = document.getElementById('navLinks');
-  burger.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-
-  // Reveal on scroll
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: .12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Lightbox
-  const lb = document.getElementById('lightbox');
-  const lbImg = lb.querySelector('img');
-  document.querySelectorAll('.gallery__grid a').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      lbImg.src = a.href;
-      lb.classList.add('open');
-    });
-  });
-  lb.addEventListener('click', () => lb.classList.remove('open'));
 </script>
 
 </body>
