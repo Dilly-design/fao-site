@@ -61,11 +61,11 @@
   #mobileMenu a:active { color: #EB5B00; }
 
   /* ── Gallery marquee ── */
-  .fao-marquee { overflow: hidden; direction: ltr; }
-  .fao-marquee-track { display: flex; gap: 16px; width: max-content; animation: marquee 60s linear infinite; }
+  .fao-marquee { overflow: hidden; direction: ltr; min-height: 300px; }
+  .fao-marquee-track { display: flex; gap: 16px; width: max-content; animation: marquee 60s linear infinite; will-change: transform; transform: translateZ(0); }
   .fao-marquee:hover .fao-marquee-track { animation-play-state: paused; }
-  .fao-marquee img { height: 300px; width: auto; border-radius: 4px; display: block; }
-  @media (max-width: 760px) { .fao-marquee img { height: 200px; } }
+  .fao-marquee img { height: 300px; width: auto; border-radius: 4px; display: block; background: #EFEBE1; }
+  @media (max-width: 760px) { .fao-marquee { min-height: 200px; } .fao-marquee img { height: 200px; } }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* ── Clients logo wall ── */
@@ -485,8 +485,8 @@
   </div>
   <div class="fao-marquee">
     <div class="fao-marquee-track">
-      <img src="assets/img/gallery/g1.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g2.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g3.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g4.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g5.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g6.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g7.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g8.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g9.jpg" alt="ضيافة فاو" loading="lazy"><img src="assets/img/gallery/g10.jpg" alt="ضيافة فاو" loading="lazy">
-      <img src="assets/img/gallery/g1.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g2.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g3.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g4.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g5.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g6.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g7.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g8.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g9.jpg" alt="" aria-hidden="true" loading="lazy"><img src="assets/img/gallery/g10.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="assets/img/gallery/g1.jpg" alt="ضيافة فاو" loading="lazy" decoding="async"><img src="assets/img/gallery/g2.jpg" alt="ضيافة فاو" loading="lazy" decoding="async"><img src="assets/img/gallery/g3.jpg" alt="ضيافة فاو" loading="lazy" decoding="async"><img src="assets/img/gallery/g4.jpg" alt="ضيافة فاو" loading="lazy" decoding="async"><img src="assets/img/gallery/g5.jpg" alt="ضيافة فاو" loading="lazy" decoding="async"><img src="assets/img/gallery/g6.jpg" alt="ضيافة فاو" loading="lazy" decoding="async"><img src="assets/img/gallery/g7.jpg" alt="ضيافة فاو" loading="lazy" decoding="async"><img src="assets/img/gallery/g8.jpg" alt="ضيافة فاو" loading="lazy" decoding="async"><img src="assets/img/gallery/g9.jpg" alt="ضيافة فاو" loading="lazy" decoding="async"><img src="assets/img/gallery/g10.jpg" alt="ضيافة فاو" loading="lazy" decoding="async">
+      <img src="assets/img/gallery/g1.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/gallery/g2.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/gallery/g3.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/gallery/g4.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/gallery/g5.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/gallery/g6.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/gallery/g7.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/gallery/g8.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/gallery/g9.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/gallery/g10.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
     </div>
   </div>
 </div>
@@ -682,6 +682,16 @@
   function toggleMobileMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
+
+  // Warm the gallery cache after the page finishes loading, so the marquee
+  // is already populated by the time the visitor scrolls to it.
+  window.addEventListener('load', function () {
+    var warm = function () {
+      for (var i = 1; i <= 10; i++) { (new Image()).src = 'assets/img/gallery/g' + i + '.jpg'; }
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 3000 });
+    else setTimeout(warm, 1200);
+  });
 
   function openOrderModal() {
     document.getElementById('orderModal').style.display = 'block';
